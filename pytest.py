@@ -53,3 +53,4 @@ for i in range(11):
     string +=`i`
 print string
 
+print "Find 'city' in the string " + `city` + "... found at index " +  str(city.find('city'))
