@@ -29,4 +29,8 @@ count = anotherdict['Ax'] + anotherdict['Bx'] + anotherdict['Cx']
 print count
 
 print "-- String --"
+city = "this is a city"
+print city
+sub_city = city[:5]
+print sub_city
 
