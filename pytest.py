@@ -27,10 +27,29 @@ count = doclisttt['A'] + doclisttt['B'] + doclisttt['C']
 print count
 count = anotherdict['Ax'] + anotherdict['Bx'] + anotherdict['Cx']
 print count
+print anotherdict['Ax']
 
 print "-- String --"
 city = "this is a city"
 print city
-sub_city = city[:5]
+sub_city = city[0:4]
 print sub_city
+print len(sub_city)
+
+class xyz:
+    x = None
+    y = None
+    z = None
+
+xyz_dat = xyz()
+xyz_dat.x = 11;
+xyz_dat.y = 'A';
+xyz_dat.z = "AAAA";
+
+print "x:" + str(xyz_dat.x) + " y:" + str(xyz_dat.y) + " z:" + str(xyz_dat.z)
+
+string = 'string'
+for i in range(11):
+    string +=`i`
+print string
 
