@@ -85,6 +85,21 @@ print("Find 'city' in the string " + repr(city) + "... found at index " +  str(c
 # print val
 
 print("-- Loop --")
-nums = range(10)
-for num in nums:
-    print(num,end="") # print without newlines
+it_num = xrange(3,10)
+for num in it_num:
+    if num % 2 == 0:        # check even
+        print(num,end=" ")  # print without newlines
+    elif num == 7:
+        break
+
+for num in it_num:
+    print(num,end=" ")  # print without newlines
+else:
+    print("num reached: " + str(num))
+
+item = 0
+while item < 22:
+    print(item)
+    item += 1
+else:
+    print("item reached: " + str(item))
