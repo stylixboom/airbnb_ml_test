@@ -72,3 +72,9 @@ for i in range(11):
 print string
 
 print "Find 'city' in the string " + `city` + "... found at index " +  str(city.find('city'))
+
+print "-- Input --"
+name = raw_input("Enter name: ");
+print name
+val = input("Enter val: ");
+print val
