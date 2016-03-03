@@ -36,6 +36,24 @@ sub_city = city[0:4]
 print sub_city
 print len(sub_city)
 
+print "-- Convert --"
+abc = '123'
+print abc
+print `abc`
+print type(abc)
+bcd = int(abc)
+print bcd
+print `bcd`
+print type(bcd)
+cde = float(abc)
+print cde
+print `cde`
+print type(cde)
+list_abc = list(abc)
+print list_abc
+print `list_abc[1]`
+
+print "-- Class --"
 class xyz:
     x = None
     y = None
