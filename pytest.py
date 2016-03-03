@@ -6,6 +6,7 @@ from datetime import date
 import string
 import random
 
+import numpy as np
 
 
 #Basic
@@ -123,3 +124,16 @@ def random_word(text):
     print(word)
 
 random_word("this is my word")
+
+print("-- Matrix --")
+A = np.matrix([[1,2],[3,4],[5,6]])
+print(A[:])
+# slice row,col
+# [:,1] slice all row, only col 1
+print(A[:,1])
+# [0,:] slice only row 0, all col
+print(A[0,:])
+# [:2,:] slice row [0,2), all col
+print(A[:2,:])
+# [:2,1:3] slice row [0,2), col [1,3)
+print(A[:2,1:3])
