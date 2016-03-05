@@ -1,7 +1,11 @@
 #!/usr/bin/python
 
-from __future__ import print_function
 import csv
+import time  # This is required to include time module.
+from datetime import date
+import string
+import random
+
 
 
 #Basic
@@ -85,7 +89,7 @@ print("Find 'city' in the string " + repr(city) + "... found at index " +  str(c
 # print val
 
 print("-- Loop --")
-it_num = xrange(3,10)
+it_num = range(3,10)
 for num in it_num:
     if num % 2 == 0:        # check even
         print(num,end=" ")  # print without newlines
@@ -103,3 +107,19 @@ while item < 22:
     item += 1
 else:
     print("item reached: " + str(item))
+
+
+ticks = time.time()
+print("Number of ticks since 12:00am, January 1, 1970: " + str(ticks))
+print(date.today())
+
+ddd = None
+print(ddd is None)
+
+print("-- Function --")
+def random_word(text):
+    word = text.split(' ')
+    #random.sample(string.ascii_uppercase,10)
+    print(word)
+
+random_word("this is my word")
