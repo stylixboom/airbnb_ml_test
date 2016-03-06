@@ -3,8 +3,10 @@
 import seaborn as sns
 import pandas as pd
 
-df1 = pd.read_csv('./data/countries.csv')
-print(df1)
+countries = pd.read_csv('./data/countries.csv')
+countries_noeng = countries[countries.destination_language != "eng"]
+print(countries_noeng)
 
-df2 = pd.read_csv('./data/test_users.csv')
-print(df2.head(5))
+
+test_users = pd.read_csv('./data/test_users.csv')
+print(test_users.head(5))
