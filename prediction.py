@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import datetime as dt
 import os.path
+from sklearn import svm
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.externals import joblib
 
 """
 The dataset can be downloaded from here
@@ -25,6 +29,7 @@ LABEL_CSV_FILE          = "./data/label.csv"
 
 # Date formatting
 DATE_FORMAT = '%Y-%m-%d'
+DATA_LABEL = 'country_destination'
 
 def parse_date(date_str, format_str):
     """
@@ -99,7 +104,7 @@ def main():
     1. Data pre-processing / Feature preparation
     2. Feature extraction
     3. Training
-    4. Predicting
+    4. Predicting / Output result
     """
     # Variables
     train_users = None
@@ -116,7 +121,7 @@ def main():
         test_users = pd.read_csv(TEST_CSV_FILE, index_col=0)    # user_id is at col 0
         #sessions = pd.read_csv(SESSSIONS_CSV_FILE, index_col=0) # user_id is at col 0
 
-    # 1. Data pre-processing
+# 1. Data pre-processing
 
         # Merge dataset for processing once together
         users = pd.concat((train_users, test_users), axis=0)
@@ -125,10 +130,9 @@ def main():
         extract_date(users, 'date_account_created')
 
         # Drop non-necessary/not possible field to be predicted
-        label_attrib = 'country_destination'            # Predicting label
         drop_attribs = ['date_first_booking',           # This field is not available on test set
                         'timestamp_first_active',       # This field is quite duplicated to 'date_account_created'
-                        label_attrib]
+                        DATA_LABEL]                         # Predicting label
         users.drop(drop_attribs, inplace=True, axis=1)
 
         # Cleaning noisy age
@@ -142,14 +146,14 @@ def main():
         # Collect categorical attribute
         categorical_features = filter_list(list(users.columns), ('date','time'))
 
-    # 2. Feature extraction
+# 2. Feature extraction
 
         # Apply one-hot-encoding feature
         users = category_to_one_hot_encoding(users, categorical_features)
 
         # Keep groundtruth label
-        labels = train_users[label_attrib].copy()
-        train_users.drop(label_attrib, inplace=True, axis=1)
+        labels = pd.DataFrame(train_users[DATA_LABEL].copy())
+        train_users.drop(DATA_LABEL, inplace=True, axis=1)
 
         # Split back train/test users (with extracted features)
         train_users = users.ix[train_users.index]
@@ -171,8 +175,55 @@ def main():
         # Checking consistency after loaded
         assert set(train_users.index) == set(labels.index)
 
-    # 3. Training
-    print("Training...")
+# 3. Training
+
+    # Encode groundtruth label
+    le = LabelEncoder()
+    labels_enc = le.fit_transform(labels[DATA_LABEL])
+
+    # Create classifier
+    clf = None
+    clf_mode = 'rfc'
+    clf_dmp_file = './data/clf/clf_' + clf_mode + '.pkl'
+
+    if not os.path.isfile(clf_dmp_file):
+        if clf_mode == 'svm':
+            # SVM
+            clf = svm.SVC()
+        elif clf_mode == 'rfc':
+            # Random Forest
+            clf = RandomForestClassifier(n_estimators=100, n_jobs=4)
+        else:
+            # Other classifiers
+            clf = None
+
+        # Training
+        clf.fit(train_users, labels_enc)
+
+        # Save trained clf
+        # Skipped!!
+        #joblib.dump(clf, clf_dmp_file)
+    else:
+        # Load trained clf
+        # Skipped!!
+        #clf = joblib.load(clf_dmp_file)
+
+# 4. Predicting / Output result
+
+    # Predict
+    predicted_labels = clf.predict(test_users)
+
+    # Transform encoded labels to original countries and associated its user_id
+    ids=[]
+    countries=[]
+    for idx in range(len(test_users)):
+        ids.append(test_users.index[idx])
+        countries.append(le.inverse_transform(predicted_labels[idx]))
+
+    # Save prediction results
+    output_results = pd.DataFrame(np.column_stack((ids, countries)), columns=['id', 'country'])
+    output_results.to_csv(RESULT_CSV_FILE, index=False)
+
 
 
 if __name__ == '__main__':
