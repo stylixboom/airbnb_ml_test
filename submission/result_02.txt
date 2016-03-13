@@ -1,0 +1,6 @@
+Based on the first submission.
+Now testing on RandomForest parameter
+
+n_estimators=25
+
+Kaggle score: 0.69131
