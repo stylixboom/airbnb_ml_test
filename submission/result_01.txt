@@ -1,0 +1,6 @@
+My first trial with RandomForest (Traning speed)
+n_estimators=100
+
+Trained on all field including age using one-hot-encoding.
+
+Kaggle score: 0.69642
