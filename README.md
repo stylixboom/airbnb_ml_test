@@ -15,17 +15,20 @@ You need to have Python with the following requirements:
 - sklearn
 - iPython notebook (optional)
 
-### Where to find the dataset:
+## Where to find the dataset:
 Download and **extract** the data into **./data**
 
 URL: https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings/data
 
-### To run the code:
+## To run the code:
 Then the code is ready to be run via **prediction.py**, which will process all the following step and output the predicted result into **./data/result.csv**
 - Data pre-processing / Feature preparation
 - Feature extraction
 - Training
 - Predicting / Output result
+
+## Kaggle score 0.69821
+The submitted file can be obtained from ./submission/result_07.csv
 
 ## Supplementary files:
 - airbnb_db_er.pdf                  // Entity relationship dtagram for all the tables
