@@ -22,10 +22,10 @@ URL: https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings/data
 
 ### To run the code:
 Then the code is ready to be run via **prediction.py**, which will process all the following step and output the predicted result into **./data/result.csv**
-1. Data pre-processing / Feature preparation
-2. Feature extraction
-3. Training
-4. Predicting / Output result
+- Data pre-processing / Feature preparation
+- Feature extraction
+- Training
+- Predicting / Output result
 
 ## Supplementary files:
 - airbnb_db_er.pdf                  // Entity relationship dtagram for all the tables
