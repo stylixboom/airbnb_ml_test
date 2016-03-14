@@ -36,7 +36,9 @@ Then the code is ready to be run via **prediction.py**, which will process all t
 
 ## Contact info:
 Siriwat K.
+
 siriwat@live.jp
+
 http://www.satoh-lab.nii.ac.jp/~stylix
 
 
