@@ -1,9 +1,0 @@
-Dimension reduction by groupping rare values together,
-that will result to lower number of dimension by one-hot-encoding
-
-Age feature is expanded with overlapping duration.
-
-n_estimators=100
-
-
-Kaggle score: 0.68166
