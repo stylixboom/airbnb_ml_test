@@ -1,8 +1,10 @@
 # Airbnb New User Booking Competition (Kaggle)
 
 ## Kaggle score
-This code will produce the result with kaggle score 0.69821
-The submitted file can be obtained from ./submission/result_07.csv
+This code will produce the result with kaggle score **0.69821**
+The submitted file can be obtained from **./submission/result_07.csv**
+
+![Architecture diagram](architecture.png)
 
 ## Competition site:
 https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings
