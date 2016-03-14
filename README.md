@@ -1,5 +1,9 @@
 # Airbnb New User Booking Competition (Kaggle)
 
+## Kaggle score
+This code will produce the result with kaggle score 0.69821
+The submitted file can be obtained from ./submission/result_07.csv
+
 ## Competition site:
 https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings
 
@@ -26,9 +30,6 @@ Then the code is ready to be run via **prediction.py**, which will process all t
 - Feature extraction
 - Training
 - Predicting / Output result
-
-## Kaggle score 0.69821
-The submitted file can be obtained from ./submission/result_07.csv
 
 ## Supplementary files:
 - airbnb_db_er.pdf                  // Entity relationship dtagram for all the tables
