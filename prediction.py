@@ -283,8 +283,10 @@ def main():
         #joblib.dump(clf, clf_dmp_file)
     else:
         # Load trained clf
-        print("Skiped load clf!!")
-        #clf = joblib.load(clf_dmp_file)
+        print("Load clf..", end="")
+        clf = joblib.load(clf_dmp_file)
+        print("done.")
+
 
 # 4. Predicting / Output result
     print("== [4] Predicting ==")
